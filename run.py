@@ -24,6 +24,21 @@ import pandas as pd
 import transformers
 from transformers import GPT2Tokenizer
 
+ Install required libraries
+pip_packages = [
+    'beautifulsoup4',
+    'newspaper3k',
+    'nltk',
+    'openai',
+    'pandas',
+    'streamlit',
+    'apify-client',
+    'transformers'
+]
+
+for package in pip_packages:
+    os.system(f'pip install {package}')
+
 import json
 #openai.api_key = openai.api_key = os.environ['openai_api_key']
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
