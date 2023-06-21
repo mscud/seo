@@ -1,14 +1,28 @@
-# Import necessary libraries
-import requests
-import os
+import subprocess
+
+# Define the required packages
+packages = [
+    'beautifulsoup4',
+    'newspaper3k',
+    'nltk',
+    'openai',
+    'pandas',
+    'streamlit',
+    'apify-client',
+    'transformers'
+]
+
+# Install packages using pip
+for package in packages:
+    subprocess.check_call(['pip', 'install', package])
+
+# Import the required modules
 from bs4 import BeautifulSoup
-import pandas as pd
+import newspaper
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from nltk.collocations import BigramAssocMeasures, BigramCollocationFinder
-import newspaper
-from newspaper import Article
 import nltk
 import statistics
 import collections
@@ -24,20 +38,6 @@ import pandas as pd
 import transformers
 from transformers import GPT2Tokenizer
 
-# Install required libraries
-pip_packages = [
-    'beautifulsoup4',
-    'newspaper3k',
-    'nltk',
-    'openai',
-    'pandas',
-    'streamlit',
-    'apify-client',
-    'transformers'
-]
-
-for package in pip_packages:
-    os.system(f'pip install {package}')
 
 import json
 #openai.api_key = openai.api_key = os.environ['openai_api_key']
