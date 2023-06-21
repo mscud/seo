@@ -1,4 +1,6 @@
 import subprocess
+import nltk
+from transformers import GPT2Tokenizer
 
 # Define the required packages
 packages = [
@@ -14,50 +16,44 @@ packages = [
 
 # Install packages using pip
 for package in packages:
-    subprocess.check_call(['pip', 'install', package])
+    try:
+        subprocess.check_call(['pip', 'install', package])
+        print(f"{package} installed successfully.")
+    except Exception as e:
+        print(f"Error occurred while installing {package}: {e}")
 
-# Import the required modules
-import beautifulsoup4
-import newspaper
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-from nltk.probability import FreqDist
-from nltk.collocations import BigramAssocMeasures, BigramCollocationFinder
-import nltk
-import statistics
-import collections
-from nltk.collocations import TrigramAssocMeasures, TrigramCollocationFinder
-from nltk.collocations import QuadgramAssocMeasures, QuadgramCollocationFinder
-import time
-import openai
-import pandas as pd
-import re
-import streamlit as st
-from apify_client import ApifyClient
-import pandas as pd
-import transformers
-from transformers import GPT2Tokenizer
+# NLTK datasets to download
+datasets = [
+    'stopwords',
+    'punkt',
+    'averaged_perceptron_tagger',
+    'tagsets',
+    'words',
+    'maxent_ne_chunker',
+    'vader_lexicon',
+    'inaugural',
+    'webtext',
+    'treebank',
+    'gutenberg',
+    'genesis',
+    'trigram_collocations',
+    'quadgram_collocations'
+]
 
+# Download NLTK datasets
+for dataset in datasets:
+    try:
+        nltk.download(dataset)
+        print(f"{dataset} downloaded successfully.")
+    except Exception as e:
+        print(f"Error occurred while downloading {dataset}: {e}")
 
-import json
-#openai.api_key = openai.api_key = os.environ['openai_api_key']
-tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-
-
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('tagsets')
-nltk.download('words')
-nltk.download('maxent_ne_chunker')
-nltk.download('vader_lexicon')
-nltk.download('inaugural')
-nltk.download('webtext')
-nltk.download('treebank')
-nltk.download('gutenberg')
-nltk.download('genesis')
-nltk.download('trigram_collocations')
-nltk.download('quadgram_collocations')
+# Load the tokenizer
+try:
+    tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+    print("Tokenizer loaded successfully.")
+except Exception as e:
+    print(f"Error occurred while loading the tokenizer: {e}")
 
 
 # Define a function to scrape Google search results and create a dataframe
