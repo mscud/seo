@@ -1,28 +1,14 @@
-import subprocess
-
-# Define the required packages
-packages = [
-    'beautifulsoup4',
-    'newspaper3k',
-    'nltk',
-    'openai',
-    'pandas',
-    'streamlit',
-    'apify-client',
-    'transformers'
-]
-
-# Install packages using pip
-for package in packages:
-    subprocess.check_call(['pip', 'install', package])
-
-# Import the required modules
+# Import necessary libraries
+import requests
+import os
 from bs4 import BeautifulSoup
-import newspaper
+import pandas as pd
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from nltk.collocations import BigramAssocMeasures, BigramCollocationFinder
+import newspaper
+from newspaper import Article
 import nltk
 import statistics
 import collections
@@ -38,8 +24,25 @@ import pandas as pd
 import transformers
 from transformers import GPT2Tokenizer
 
-# Continue with the rest of your code...
+import json
+#openai.api_key = openai.api_key = os.environ['openai_api_key']
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 
+
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('tagsets')
+nltk.download('words')
+nltk.download('maxent_ne_chunker')
+nltk.download('vader_lexicon')
+nltk.download('inaugural')
+nltk.download('webtext')
+nltk.download('treebank')
+nltk.download('gutenberg')
+nltk.download('genesis')
+nltk.download('trigram_collocations')
+nltk.download('quadgram_collocations')
 
 
 # Define a function to scrape Google search results and create a dataframe
@@ -69,10 +72,7 @@ def scrape_google(search):
         "queries": search,
         "resultsPerPage": 10,
         "saveHtml": False,
-        "saveHtmlToKeyValueStore": False,
-        "countryCode": fr,
-        "languageCode": fr
-        
+        "saveHtmlToKeyValueStore": False
     }
 
     print(f"Running Google Search Scrape for {search}")
@@ -548,7 +548,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
