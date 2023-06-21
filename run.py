@@ -17,7 +17,7 @@ for package in packages:
     subprocess.check_call(['pip', 'install', package])
 
 # Import the required modules
-import BeautifulSoup
+import beautifulsoup4
 import newspaper
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
@@ -87,7 +87,10 @@ def scrape_google(search):
         "queries": search,
         "resultsPerPage": 10,
         "saveHtml": False,
-        "saveHtmlToKeyValueStore": False
+        "saveHtmlToKeyValueStore": False,
+        "countryCode": fr,
+        "languageCode": fr
+        
     }
 
     print(f"Running Google Search Scrape for {search}")
