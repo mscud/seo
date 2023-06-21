@@ -17,7 +17,7 @@ for package in packages:
     subprocess.check_call(['pip', 'install', package])
 
 # Import the required modules
-from bs4 import BeautifulSoup
+import BeautifulSoup
 import newspaper
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
