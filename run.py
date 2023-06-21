@@ -24,7 +24,7 @@ import pandas as pd
 import transformers
 from transformers import GPT2Tokenizer
 
- Install required libraries
+# Install required libraries
 pip_packages = [
     'beautifulsoup4',
     'newspaper3k',
