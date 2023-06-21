@@ -57,7 +57,7 @@ def scrape_google(search):
     ACTOR_NAME = 'apify/google-search-scraper'
 
     # Retrieve the Apify API key from Streamlit secrets
-    APIFY_API_KEY = st.secrets["APIFY_API_KEY"]
+    APIFY_API_KEY = st.secrets["apify_api_nvn0clQW70x4UiYzb9eo3ubQXriZWr2EN0kb"]
 
     # Initialize the ApifyClient with your API token
     client = ApifyClient(APIFY_API_KEY)
